@@ -1,0 +1,34 @@
+ALGORITHM checkpoint
+VAR
+    vowels : STRING:="aeiou"
+    sent : STRING:="";
+    nv : INTEGER:=0;
+    nw : INTEGER:=1;
+BEGIN
+FUNCTION verifie(a) : BOOLEAN
+VAR
+    b :BOOLEAN:=TRUE;
+BEGIN
+    FOR i FROM 0 TO length(a)-2 STEP 1  DO
+        IF (NOT(((upcase(a[i])) In "ABCDEFGHEGKLMNOPQRSTUVWXYZ") or a[i]=" " )) THEN
+            b:=FALSE;
+        END_IF
+    END_FOR
+    IF (a[-1]=".") THEN
+        b:=FALSE;
+    END_IF
+    RETURN b ;
+END 
+REPEAT
+    Read(sent);
+UNTIL (verifie(sent))
+FOR i FROM 0 TO length(a)-2 STEP 1  DO
+    IF (sent[i] in vowels) THEN
+        nv:=nv+1
+    ELSE_IF (sent[i]=" ") THEN
+        nw:=nw+1;
+    END_IF
+END_FOR
+    Write(sent,"\n the length of the sentence is ",length(sent),"\n there are",nw," words and ",nw,"vowels" )
+
+END
